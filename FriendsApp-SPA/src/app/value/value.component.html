@@ -1,3 +1,6 @@
-<p>
-  value works!
+<!-- ngFor is an a structural directive in angular; -->
+<!-- structural directive always have an asterisk before the directive name;  -->
+<!-- structural directive means that this change the DOM in some way; -->
+<p *ngFor="let value of values">
+  {{value.id}}, {{value.name}}
 </p>
