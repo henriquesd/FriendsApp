@@ -1,8 +1,14 @@
 # FriendsApp
 ASP.NET Core Project using Angular and Entity Framework Core
 
-## Command to execute the project
+## Commands to execute the project
+
+### .NET Core Project
 - dotnet watch run
+
+### Angular Project
+- npm install (for the first time, when download the project)
+- ng serve
 
 -----------------------------------------------------
 
