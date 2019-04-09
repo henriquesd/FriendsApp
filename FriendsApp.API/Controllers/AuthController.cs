@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using FriendsApp.API.Data;
+using FriendsApp.API.Dtos;
 using FriendsApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,21 +17,21 @@ namespace FriendsApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             // TODO: validate request;
 
-            username = username.ToLower();
+            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-            if (await _repository.UserExists(username))
+            if (await _repository.UserExists(userForRegisterDto.Username))
                 return BadRequest("Username already exists");
 
             var userToCreate = new User
             {
-                Username = username
+                Username = userForRegisterDto.Username
             };
 
-            var createdUser = await _repository.Register(userToCreate, password);
+            var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password);
 
             // TODO: change to return CreatedAtRoute (now don't have a method to currently get the user at this time);
             return StatusCode(201); // 201 is the state code of CreatedAtRoute;
