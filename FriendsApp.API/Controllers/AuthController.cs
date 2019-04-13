@@ -43,34 +43,6 @@ namespace FriendsApp.API.Controllers
             return StatusCode(201); // 201 is the state code of CreatedAtRoute;
         }
 
-        // example without [ApiController];
-        // [HttpPost("register")]
-        // public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
-        // {
-        //     // TODO: validate request;
-
-        //     // if don't use the [ApiController], needs to specify a ModelState;
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return BadRequest(ModelState);
-        //     }
-
-        //     userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
-
-        //     if (await _repository.UserExists(userForRegisterDto.Username))
-        //         return BadRequest("Username already exists");
-
-        //     var userToCreate = new User
-        //     {
-        //         Username = userForRegisterDto.Username
-        //     };
-
-        //     var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password);
-
-        //     // TODO: change to return CreatedAtRoute (now don't have a method to currently get the user at this time);
-        //     return StatusCode(201); // 201 is the state code of CreatedAtRoute;
-        // }
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
