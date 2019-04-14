@@ -19,9 +19,7 @@ namespace FriendsApp.API.Controllers
         private readonly DataContext _context;
         public ValuesController(DataContext context)
         {
-            this._context = context;
-
-
+            _context = context;
         }
 
         // GET api/values

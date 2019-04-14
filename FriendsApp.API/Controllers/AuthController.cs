@@ -20,8 +20,8 @@ namespace FriendsApp.API.Controllers
         public IConfiguration _config { get; set; }
         public AuthController(IAuthRepository repository, IConfiguration config)
         {
-            this._config = config;
-            this._repository = repository;
+            _config = config;
+            _repository = repository;
         }
 
         [HttpPost("register")]

@@ -10,7 +10,7 @@ namespace FriendsApp.API.Data
         private readonly DataContext _context;
         public DatingRepository(DataContext context)
         {
-            this._context = context;
+            _context = context;
         }
 
         // On Add method and on Delete method, is not being used async method because when something is
