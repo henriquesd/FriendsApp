@@ -11,6 +11,8 @@ namespace FriendsApp.API.Models
         public byte[] PasswordSalt { get; set; }
         public string Gender {get;set;}
         public DateTime DateOfBirth { get; set; }
+        
+        // TODO: Change KnowAs to KnownAs;
         public string KnowAs { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
