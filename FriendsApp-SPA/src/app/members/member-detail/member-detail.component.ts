@@ -24,7 +24,6 @@ export class MemberDetailComponent implements OnInit {
     // "+" it's used to force the "id" to be passed as a number, the id will be retrieved
     // from the url as string but then converted to number;
     this.userService.getUser(+this.route.snapshot.params['id']).subscribe((user: User) => {
-      console.log(user);
       this.user = user;
     }, error => {
       this.alertify.error(error);
