@@ -21,7 +21,7 @@ namespace FriendsApp.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateAdd");
+                    b.Property<DateTime>("DateAdded");
 
                     b.Property<string>("Description");
 

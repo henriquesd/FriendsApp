@@ -29,7 +29,7 @@ Can use the "DB Browser for SQLite" software to access the database.
 
 
 ### Photo storage
-For photo storage using Cloudinary, needs to create an free account on Cloudinary and set the configuration with your account data on "appsettings.json" file. On "CloudinarySettings", inform:
+For photo storage using Cloudinary, needs to create an free account on Cloudinary and set the configuration with your account data on "appsettings.json" file. On "CloudinarySettings", inform your:
 - CloudName
 - ApiKey
 - ApiSecret

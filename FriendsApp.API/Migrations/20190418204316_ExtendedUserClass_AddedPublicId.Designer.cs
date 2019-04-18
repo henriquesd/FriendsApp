@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FriendsApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190415224031_ExtendedUserClass")]
-    partial class ExtendedUserClass
+    [Migration("20190418204316_ExtendedUserClass_AddedPublicId")]
+    partial class ExtendedUserClass_AddedPublicId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,11 +23,13 @@ namespace FriendsApp.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateAdd");
+                    b.Property<DateTime>("DateAdded");
 
                     b.Property<string>("Description");
 
                     b.Property<bool>("IsMain");
+
+                    b.Property<string>("PublicId");
 
                     b.Property<string>("Url");
 
