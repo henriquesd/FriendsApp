@@ -9,6 +9,7 @@ namespace FriendsApp.API.Models
         public string Description { get; set; }
         public DateTime DateAdd { get; set; }
         public bool IsMain { get; set; }
+        public string PublicId { get; set; }
 
         // For define a relationship needs to inverse what we have got in User class;
         public User User { get; set; }
