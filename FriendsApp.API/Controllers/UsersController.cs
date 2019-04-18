@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using FriendsApp.API.Data;
@@ -40,5 +42,24 @@ namespace FriendsApp.API.Controllers
 
             return Ok(userToReturn);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
+        {
+            // this is how we gonna check to see if the user is the current user that's passing
+            // the token to our server, that's attempting to access this route and doing an HttpPut;
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            
+            var userFromRepo = await _repository.GetUser(id);
+
+            _mapper.Map(userForUpdateDto, userFromRepo);
+
+            if (await _repository.SaveAll())
+                return NoContent();
+            
+            throw new Exception($"Updating user {id} failed on save");
+        }
+
     }
 }
