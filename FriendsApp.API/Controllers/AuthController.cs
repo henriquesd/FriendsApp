@@ -35,15 +35,14 @@ namespace FriendsApp.API.Controllers
             if (await _repository.UserExists(userForRegisterDto.Username))
                 return BadRequest("Username already exists");
 
-            var userToCreate = new User
-            {
-                Username = userForRegisterDto.Username
-            };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
             var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password);
+           
+            var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
 
-            // TODO: change to return CreatedAtRoute (now don't have a method to currently get the user at this time);
-            return StatusCode(201); // 201 is the state code of CreatedAtRoute;
+            return CreatedAtRoute("GetUser", new {controller = "Users",
+                id = createdUser.Id}, userToReturn);
         }
 
         [HttpPost("login")]
