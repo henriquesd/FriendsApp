@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FriendsApp.API.Data;
 using FriendsApp.API.Dtos;
+using FriendsApp.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FriendsApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
