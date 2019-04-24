@@ -22,5 +22,7 @@ namespace FriendsApp.API.Models
 
         // For define a relationship needs to inverse what we have got in User class;
         public ICollection<Photo> Photos { get; set;}
+        public ICollection<Like> Likers { get; set; }
+        public ICollection<Like> Likees { get; set; }
     }
 }
