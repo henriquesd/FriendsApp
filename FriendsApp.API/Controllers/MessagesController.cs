@@ -78,7 +78,9 @@ namespace FriendsApp.API.Controllers
         public async Task<IActionResult> CreateMessage(int userId,
                                                     MessageForCreationDto messageForCreationDto)
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            var sender = await _repository.GetUser(userId);
+
+            if (sender.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
             
             messageForCreationDto.SenderId = userId;
@@ -92,10 +94,10 @@ namespace FriendsApp.API.Controllers
 
             _repository.Add(message);
 
-            var messageToReturn = _mapper.Map<MessageForCreationDto>(message);
-
-            if (await _repository.SaveAll())
+            if (await _repository.SaveAll()) {
+                var messageToReturn = _mapper.Map<MessageToReturnDto>(message);
                 return CreatedAtRoute("GetMessage", new {id = message.Id}, messageToReturn);
+            }
             
             throw new Exception("Creating the message failed on save");
         }

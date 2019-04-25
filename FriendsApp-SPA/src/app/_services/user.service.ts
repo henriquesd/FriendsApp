@@ -91,7 +91,6 @@ constructor(private http: HttpClient) { }
           if (response.headers.get('Pagination') != null) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
           }
-
           return paginatedResult;
         })
       );
@@ -99,5 +98,9 @@ constructor(private http: HttpClient) { }
 
   getMessageThread(id: number, recipientId: number) {
     return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId);
+  }
+
+  sendMessage(id: number, message: Message) {
+    return this.http.post(this.baseUrl + 'users/' + id + '/messages', message);
   }
 }
